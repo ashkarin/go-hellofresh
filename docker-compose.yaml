@@ -1,0 +1,19 @@
+version: '3'
+services:
+    app:
+        build: .
+        image: ashkarin/hellof
+        ports:
+            - "8080:8080"
+        links:
+            - mongodb
+        environment:
+            DEBUG: 'true'
+            PORT: '8080'
+            TEST: 'true'
+
+    mongodb:
+        image: mvertes/alpine-mongo:3.2.3
+        restart: unless-stopped
+        ports:
+            - "27017:27017"
