@@ -1,0 +1,10 @@
+{
+    "db" : {
+        "server": "mongodb",
+        "port": "27017",
+        "dbname": "hellofresh"
+    },
+    "address": "",
+    "port": "8080",
+    "timeout": 15
+}
