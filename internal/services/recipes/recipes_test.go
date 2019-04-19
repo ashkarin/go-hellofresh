@@ -21,7 +21,6 @@ var (
 	ratingsCount  int64   = 3
 	score         int8    = 3
 )
-var loc *time.Location
 
 func CreateHTTPRequest(method, url string, body interface{}) *http.Request {
 	var req *http.Request
@@ -36,15 +35,6 @@ func CreateHTTPRequest(method, url string, body interface{}) *http.Request {
 }
 
 var _ = Describe("RecipesService", func() {
-	It("should get time location properly", func() {
-		var err error
-		loc, err = time.LoadLocation("UTC")
-		if err != nil {
-			GinkgoWriter.Write([]byte(err.Error()))
-			Expect(err).NotTo(HaveOccurred())
-		}
-	})
-
 	It("should return alive when requesting the root", func() {
 		req := CreateHTTPRequest("GET", baseUrl+"/", nil)
 		client := &http.Client{Timeout: time.Duration(timeout)}
@@ -59,10 +49,9 @@ var _ = Describe("RecipesService", func() {
 	})
 
 	It("should create a recipe", func() {
-		timestamp := time.Date(2019, 04, 11, 9, 00, 20, 0, loc)
 		expected := recipe.Recipe{
 			Name:          "My Recipe",
-			PrepTime:      timestamp,
+			PrepTime:      "PT20M",
 			Difficulty:    recipe.Easy,
 			Vegetarian:    true,
 			AverageRating: averageRating,
@@ -144,10 +133,9 @@ var _ = Describe("RecipesService", func() {
 	})
 
 	It("should update a single recipe by id", func() {
-		timestamp := time.Date(2019, 04, 11, 9, 00, 20, 0, loc)
 		expected := recipe.Recipe{
 			Name:          "Updated",
-			PrepTime:      timestamp,
+			PrepTime:      "PT20M",
 			Difficulty:    1,
 			Vegetarian:    true,
 			AverageRating: averageRating,
