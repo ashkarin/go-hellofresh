@@ -1,4 +1,4 @@
-# hellofresh-api
+# go-hellofresh
 This mini project demonstrates how the service to work with recipes can be organized. Since we don't need to do projections over the data, the MongoDB was used as a data storage.
 
 The implementation was driven by the integration tests, which can be turned on by setting `TEST` in `docker-compose.yaml` to `'true'`.
