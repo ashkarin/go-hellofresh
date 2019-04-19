@@ -8,6 +8,6 @@ Additionally, a set of Python tools were provided. These tools allow downloading
 ## Example
 ```
 docker-compose up --build
-python steal_recepies.py 0 500 --json-pretty --output data.json
-python store_recepies.py --filepath data.json  --address http://localhost:8080
+python scripts/steal_recepies.py 0 500 --json-pretty --output data.json
+python scripts/store_recepies.py --filepath data.json  --address http://localhost:8080
 ```
